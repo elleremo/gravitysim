@@ -1,0 +1,33 @@
+html {
+    margin: 0;
+    padding: 0;
+    background: #bdc3c7;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #bdc3c7, #2c3e50);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #093460, #7239a2);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: "Helvetica";
+    font-size: 1em;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+canvas {
+    border: 2px solid black;
+    margin: 5px;
+    margin-top: 5px;
+}
+
+button:active,
+button:focus {
+    outline: none;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+}
