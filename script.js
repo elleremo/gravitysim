@@ -1,7 +1,7 @@
 var swith = document.getElementById("swith");
 var set = document.getElementById("set");
 var start = document.getElementById("start");
-var canvas = document.getElementsByTagName('canvas')[0];
+var canvas = document.getElementById('canvas');
 
 
 canvas.addEventListener('click', function (e) {
@@ -12,16 +12,16 @@ swith.addEventListener("click", showSet);
 start.addEventListener("click", starter);
 
 
-//var space = new App({
-//    render_space: canvas,
-//    width: 1550,
-//    height: 1550
-//        /*    adpt_canvas: true,
-//            border_collision: true*/
-//
-//})
-//
-//console.log(space.params);
+var space = new App({
+    render_space: canvas,
+    width: 1550,
+    height: 1550
+        /*    adpt_canvas: true,
+            border_collision: true*/
+
+})
+
+console.log(space.params);
 
 
 
@@ -32,7 +32,7 @@ function mouse_add(x, y) {
 }
 
 function starter(){
-     space.animate()
+     //space.animate()
 
 };
 

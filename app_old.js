@@ -114,7 +114,3 @@ function App(options) {
 
     }
 }
-
-function cl(e) {
-    console.log(e), console.info
-}
