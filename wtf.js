@@ -13,7 +13,7 @@ class More {
         
         function sim(a) {
             let con = a;
-            console.log("inside sim");
+            consolensole.log("inside sim");
             console.log(a.ctx);
             sim(a);
         }
@@ -25,3 +25,4 @@ class More {
     let app = new More(canvas, context);
 
     app.render();
+req

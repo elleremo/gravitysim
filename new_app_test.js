@@ -1,48 +1,116 @@
-
-
 let canvas = $('#canvas')[0];
 let context = canvas.getContext('2d');
 let toggle_control = $('#toggle_control')[0];
 let start = $('#start')[0];
 
-
-canvas.addEventListener('click', function (e) {
-    mouse_add(e.layerX, e.layerY)
-})
-
-toggle_control.addEventListener("click", toggleControl);
-start.addEventListener("click", startSimulate);
-
 let app = new Core(canvas, context);
 
 app.initProperties({
-    width: 500,
-    height: 500,
-    border_collide : false
+    width: window.innerWidth - 15,
+    height: window.innerHeight - 15,
+    border_collide: false
 })
 
 
+
 let Part = {
-    pos : {1 : 1, y : 1},
-    vel : {x : 0.5, y : 0.5},
-    acc : {x : 0, y : 0},
-    size : 20,
-    mass : 20
+    pos: {
+        x: 1,
+        y: 1
+    },
+    vel: {
+        x: 1,
+        y: 0
+    },
+    acc: {
+        x: 0,
+        y: 0
+    },
+    size: 10,
+    mass: 20
+}
+
+let Part2 = {
+    pos: {
+        x: 100,
+        y: 100
+    },
+    vel: {
+        x: 0,
+        y: 0
+    },
+    acc: {
+        x: 0,
+        y: 0
+    },
+    size: 10,
+    mass: 10
 }
 
 
-function mouse_add(x, y) {
+Listeners();
+
+
+function mouse_l(x, y) {
     let k = Object.create(Part);
-    k.pos.x = x; k.pos.y = y;
-    app.append(k);
-
+    let g =  (Math.random() * (5) + 5);
+    
+    k.pos.x = x; k.size = g;
+    k.pos.y = y; k.mass = (Math.random() * (15) + 10);
+    app.append(k,"meteor");
+//    console.log(k)
 }
 
-function startSimulate(){
-     app.simulate()
+function mouse_r(x, y) {
+    let k = Object.create(Part);
+    
+    let g =  (Math.random() * (5) +12);
+    
+    k.pos.x = x; k.mass = 40; 
+    k.pos.y = y; k.size = g;
+    app.append(k,"sun");
+//    console.log(k)
+}
+
+//console.log(sun);
+
+
+
+
+
+$(window).resize(function (e) {
+
+        app.width = window.innerWidth - 15 ;
+        app.height = window.innerHeight -15;
+    })
+
+
+function Listeners() {
+    app.height = window.document.body.clientHeight - 15 ;
+    app.width = window.document.body.clientWidth - 15;
+    
+    toggle_control.addEventListener("click", toggleControl);
+    start.addEventListener("click", startSimulate);
+
+    canvas.addEventListener('click', function (e) {
+        mouse_l(e.layerX, e.layerY)
+    }); 
+    
+    canvas.addEventListener('contextmenu', function (e) {
+        mouse_r(e.layerX, e.layerY)
+    });
+}
+
+
+
+
+function startSimulate() {
+    app.simulate()
 
 };
+
 function toggleControl() {
     set.classList.toggle("visible")
 
 }
+
