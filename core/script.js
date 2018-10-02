@@ -1,5 +1,5 @@
 var swith = document.getElementById("swith");
-var set = document.getElementById("set");
+var set = document.getElementById("setting");
 var start = document.getElementById("start");
 var canvas = document.getElementById('canvas');
 

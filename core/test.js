@@ -1,7 +1,12 @@
+/* http://paperjs.org*/
+
+
+
+
 class Core {
-    constructor(canvas) {
+    constructor(canvas, ctx) {
         this.canvas = canvas;
-        this.ctx = canvas.getContext('2d');
+        this.ctx = ctx;
         this.ctx_width = $(window).width();
         this.ctx_height = $(window).height();
         this.border_collide = true;
@@ -44,30 +49,66 @@ class Core {
         this.border_collide = options.border_collide;
     }
 
-    render(ctx) {
+    render() {
         // Добавить метод рендера к самому объекту
+        this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let item of this.planets.parts) {
+
+            item.draw(this.ctx);
+
+        }
+    }
+
+    simulate() {
+        console.log("start sim");
+        let ss = sim(this);
+        ss();
 
 
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let item in this.planets.parts) {
-            let circle = new Path2D();
-            circle.arc(item.position.x, item.position.y, item.size, 0, 2 * Math.PI);
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-            ctx.fill(circle);
+        //        sim(this)
 
 
-
-        };
     }
 
     append(obj) {
         this.planets.parts.push(new Circle(obj.pos, obj.vel, obj.acc, obj.size, obj.mass));
-        console.log(this.planets.count());
-        this.render(this.ctx)
+        console.log("частиц " + this.planets.parts.length);
+
+
+        /*==============СДЕЛАТЬ кол частиц по типу в классе типа=============*/
+
+        this.render()
     }
 }
 
+function sim(obj) {
+    let count = 0;
+    let time;
 
+    function iner() {
+
+        requestAnimationFrame(iner);
+
+        let now = new Date().getTime(),
+            dt = now - (time || now);
+        time = now;
+
+
+        //        console.info(dt);
+        //--------------------------------------------
+        obj.ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let item of obj.planets.parts) {
+            item.move(obj.planets.parts);
+            item.draw(obj.ctx);
+        }
+
+    }
+    return iner;
+
+
+}
 
 
 //======================================================
@@ -89,12 +130,37 @@ class Vector {
 Vector.count = 0;
 //======================================================
 
+class _Path {
+    constructor() {
+
+        this.color = hsla(rand(359), 100, 70, 0.5);
+        //        this.strokeStyle = "hsla(0, 72%, 38%, 0.5)";
+    }
+
+
+}
+
+function hsla(hue, saturation, lightness, alpha) {
+
+    color = `hsla(${hue},${saturation}%,${lightness}%,${alpha})`
+
+    return color;
+}
+
+function rand(x) {
+    return Math.floor(Math.random() * (x))
+    console.log("rrr")
+}
+//======================================================
 class Planets {
     constructor() {
 
     }
 }
 
+
+
+//======================================================
 class Circle {
 
     constructor(position, velocity, acceleration, size, mass) {
@@ -103,14 +169,32 @@ class Circle {
         this.acceleration = new Vector(acceleration.x, acceleration.y);
         this.size = size || 20;
         this.mass = mass || 100;
+        this.elipse = new _Path();
         Circle.count++;
     }
 
     move() {
+
+
         this.velocity.add(this.acceleration);
         this.position.add(this.velocity);
     };
 
+    draw(ctx) {
+        let r, g, b;
+        r = Math.floor(Math.random() * (100) + 100);
+        g = Math.floor(Math.random() * (100) + 100);
+        b = Math.floor(Math.random() * (100) + 100);
+
+        ctx.ellipse(10, 10, 30, 30, 0, 0, 1);
+
+        let circle = new Path2D();
+        circle.arc(this.position.x, this.position.y, this.size, 0, 2 * Math.PI);
+        ctx.fillStyle = this.elipse.color;
+        ctx.strokeStyle = this.elipse.strokeStyle;
+        ctx.fill(circle);
+        //        console.log("вызов");
+    }
 }
 
 Circle.count = 0;

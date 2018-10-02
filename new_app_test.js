@@ -1,4 +1,7 @@
+
+
 let canvas = $('#canvas')[0];
+let context = canvas.getContext('2d');
 let toggle_control = $('#toggle_control')[0];
 let start = $('#start')[0];
 
@@ -10,7 +13,7 @@ canvas.addEventListener('click', function (e) {
 toggle_control.addEventListener("click", toggleControl);
 start.addEventListener("click", startSimulate);
 
-let app = new Core(canvas);
+let app = new Core(canvas, context);
 
 app.initProperties({
     width: 500,
@@ -20,9 +23,9 @@ app.initProperties({
 
 
 let Part = {
-    pos : {x : 5, y : 5},
-    vel : {x : 5, y : 5},
-    acc : {x : 1, y : 1},
+    pos : {1 : 1, y : 1},
+    vel : {x : 0.5, y : 0.5},
+    acc : {x : 0, y : 0},
     size : 20,
     mass : 20
 }
@@ -39,7 +42,6 @@ function startSimulate(){
      app.simulate()
 
 };
-
 function toggleControl() {
     set.classList.toggle("visible")
 

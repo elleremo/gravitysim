@@ -1,0 +1,74 @@
+.control {
+    margin: 10px;
+    float: right;
+    position: fixed;
+    right: 0px;
+    width: 200px;
+
+}
+
+
+
+button,
+.setting {
+    background: rgba(21, 21, 21, 0.5);
+    border-radius: 5px;
+    border: 1px solid rgb(0, 0, 0);
+    color: #b9b9b9;
+}
+
+.setting {
+    min-height: 500px;
+}
+
+
+button {
+    width: 100%;
+    padding: 5px;
+
+}
+
+button#start {
+    position: fixed;
+    margin-top: 10px;
+
+}
+
+#toggle_control {
+    background: rgba(0, 0, 0, 0.1);
+    color: rgba(255, 255, 255, 0.7)
+}
+
+button:hover,
+#toggle_control:hover {
+
+    background: rgba(0, 0, 0, 0.8);
+
+}
+
+button:active,
+#toggle_control:active {
+
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+
+
+}
+
+
+#start {}
+
+.set-wrap {
+
+    transform: translateX(210px);
+    transition-duration: 0.3s;
+    margin-top: 10px;
+
+
+
+}
+
+.set-wrap.visible {
+
+    transform: translateX(0px);
+    transition-duration: 0.3s;
