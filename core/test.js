@@ -238,14 +238,14 @@ class Meteor extends Sun {
  
      };
         
-        let col = this.position;
-        let size = this.size/2;
-        if ( col.x > Core.canvas.width-size || col.x < size ){
-            this.velocity.x *= -1;
-        };
-        if ( col.y > Core.canvas.height-size || col.y < size ){
-            this.velocity.y *= -1;
-        };  
+//        let col = this.position;
+//        let size = this.size/2;
+//        if ( col.x > Core.canvas.width-size || col.x < size ){
+//            this.velocity.x *= -1;
+//        };
+//        if ( col.y > Core.canvas.height-size || col.y < size ){
+//            this.velocity.y *= -1;
+//        };  
     
                 
            
