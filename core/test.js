@@ -72,6 +72,9 @@ class Core {
 
 
     }
+    stopSimulate(){
+        cancelAnimationFrame(Core.RequestID)
+    }
 
     append(obj, type) {
         
@@ -101,7 +104,7 @@ function sim(obj) {
 
     function iner() {
 
-        requestAnimationFrame(iner);
+        Core.RequestID = requestAnimationFrame(iner);
 
         let now = new Date().getTime(),
             dt = now - (time || now);

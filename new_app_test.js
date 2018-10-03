@@ -86,6 +86,8 @@ $(window).resize(function (e) {
 
 
 function Listeners() {
+    document.oncontextmenu = function (){return false};
+    
     app.height = window.document.body.clientHeight - 15 ;
     app.width = window.document.body.clientWidth - 15;
     
@@ -103,9 +105,16 @@ function Listeners() {
 
 
 
-
+let starton = false;
 function startSimulate() {
+    
+    if (starton == false){
     app.simulate()
+    starton = true;
+    }else{
+    app.stopSimulate();
+    starton = false;
+    }
 
 };
 
