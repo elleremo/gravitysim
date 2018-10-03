@@ -18,8 +18,8 @@ button,
 }
 
 .setting {
-    min-height: 500px;
-    
+    min-height: 50px;
+    min-height: 100px;
 }
 
 
@@ -30,8 +30,9 @@ button {
 }
 
 button#start {
-    position: fixed;
+    
     margin-top: 10px;
+    margin-bottom: 5px;
 
 }
 
