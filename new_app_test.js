@@ -56,7 +56,7 @@ function mouse_l(x, y) {
     let g =  (Math.random() * (5) + 5);
     
     k.pos.x = x; k.size = g;
-    k.pos.y = y; k.mass = (Math.random() * (15) + 10);
+    k.pos.y = y; //k.mass = (Math.random() * (15) + 10);
     app.append(k,"meteor");
 //    console.log(k)
 }
