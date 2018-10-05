@@ -19,11 +19,10 @@ button,
 
 .setting {
     min-height: 50px;
-<<<<<<< HEAD
     max-height: 100px;
-=======
     max-height: 105px;
->>>>>>> 46e95db8758d767c6e791b4c7e3b5d2f4be864b6
+    font-size: 0.8em;
+    padding: 5px;
 }
 
 
