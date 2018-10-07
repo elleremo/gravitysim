@@ -26,8 +26,8 @@ let Part = {
         x: 0,
         y: 0
     },
-    size: 10,
-    mass: 20
+    size: 5,
+    mass: 30
 }
 
 let Part2 = {
@@ -55,7 +55,7 @@ function mouse_l(x, y) {
     let k = Object.create(Part);
     let g =  (Math.random() * (5) + 5);
     
-    k.pos.x = x; k.size = g;
+    k.pos.x = x; k.size = 5;
     k.pos.y = y; //k.mass = (Math.random() * (15) + 10);
     app.append(k,"meteor");
 //    console.log(k)
@@ -67,7 +67,7 @@ function mouse_r(x, y) {
     let g =  (Math.random() * (5) +12);
     
     k.pos.x = x; k.mass = 40; 
-    k.pos.y = y; k.size = g;
+    k.pos.y = y; k.size = 10;
     app.append(k,"sun");
 //    console.log(k)
 }
