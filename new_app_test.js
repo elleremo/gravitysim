@@ -184,7 +184,7 @@ let starton = false
 
 function startSimulate () {
 
-  if (starton == false) {
+  if (starton === false) {
     app.simulate()
     starton = true
   } else {
